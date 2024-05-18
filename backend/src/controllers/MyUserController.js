@@ -1,4 +1,4 @@
-import User from "../models/user";
+import User from "../models/user.js";
 
 const createCurrentUser = async (req, res) => {
   // check if the user exists
