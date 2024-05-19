@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import useCreateMyUser from "@/api/MyUserApi";
 
-const SocialLoginPage = () => {
+const AuthCallbackPage = () => {
   const { user, isAuthenticated } = useAuth0();
   const { createUser } = useCreateMyUser();
   const navigate = useNavigate();
@@ -29,4 +29,4 @@ const SocialLoginPage = () => {
   );
 };
 
-export default SocialLoginPage;
+export default AuthCallbackPage;
