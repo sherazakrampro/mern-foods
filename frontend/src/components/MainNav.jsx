@@ -10,7 +10,9 @@ const MainNav = () => {
         <UsernameMenu />
       ) : (
         <Button
-          onClick={() => loginWithRedirect()}
+          onClick={() => {
+            loginWithRedirect();
+          }}
           variant="ghost"
           className="text-base font-bold hover:text-orange-500 hover:bg-white"
         >

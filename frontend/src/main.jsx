@@ -2,8 +2,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import AppRoutes from "./AppRoutes";
 import { BrowserRouter as Router } from "react-router-dom";
-import { Auth0Provider } from "@auth0/auth0-react";
 import { QueryClient, QueryClientProvider } from "react-query";
+import Auth0ProviderWithNavigate from "./auth/Auth0ProviderWithNavigate";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -16,15 +16,9 @@ const queryClient = new QueryClient({
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Router>
     <QueryClientProvider client={queryClient}>
-      <Auth0Provider
-        domain={import.meta.env.VITE_AUTH0_DOMAIN}
-        clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
-        authorizationParams={{
-          redirect_uri: window.location.origin,
-        }}
-      >
+      <Auth0ProviderWithNavigate>
         <AppRoutes />
-      </Auth0Provider>
+      </Auth0ProviderWithNavigate>
     </QueryClientProvider>
   </Router>
 );
