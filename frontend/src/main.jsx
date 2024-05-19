@@ -3,7 +3,11 @@ import "./index.css";
 import AppRoutes from "./AppRoutes";
 import { BrowserRouter as Router } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
-import Auth0ProviderWithNavigate from "./auth/Auth0ProviderWithNavigate";
+import { Auth0Provider } from "@auth0/auth0-react";
+
+const domain = import.meta.env.VITE_AUTH0_DOMAIN;
+const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
+const redirectUri = import.meta.env.VITE_AUTH0_CALLBACK_URL;
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -16,9 +20,15 @@ const queryClient = new QueryClient({
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Router>
     <QueryClientProvider client={queryClient}>
-      <Auth0ProviderWithNavigate>
+      <Auth0Provider
+        domain={domain}
+        clientId={clientId}
+        authorizationParams={{
+          redirect_uri: redirectUri,
+        }}
+      >
         <AppRoutes />
-      </Auth0ProviderWithNavigate>
+      </Auth0Provider>
     </QueryClientProvider>
   </Router>
 );
