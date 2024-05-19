@@ -16,7 +16,7 @@ const AppRoutes = () => {
         }
       />
       <Route path="/about" element={<AboutPage />} />
-      <Route path="/social-login" element={<AuthCallbackPage />} />
+      <Route path="/auth-callback" element={<AuthCallbackPage />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
